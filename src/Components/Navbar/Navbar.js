@@ -1,6 +1,6 @@
-import './Navbar.css';
-import CartWidget from '../CartWidget/CartWidget';
-import { Link } from 'react-router-dom';
+import CartWidget from '../CartWidget/CartWidget'
+import './Navbar.css'
+import { Link, NavLink, useLocation } from 'react-router-dom'
 
 const Navbar = () => {
 
@@ -8,13 +8,13 @@ const Navbar = () => {
       <nav className="NavBar" >
           <div className='NavBar'>
             <Link to='/'>
-              <h3>Instrumentos</h3>
+              <h3 className='WebTitle'>MusicApp</h3>
             </Link>
           </div>
           <div className="Categories">
-              <Link to='/category/guitarra' className="Option">Guitarras</Link>
-              <Link to='/category/bajo' className="Option">Bajos</Link>
-              <Link to='/category/bateria' className="Option">Baterías</Link>
+              <NavLink to='/category/guitarras' className={({isActive}) => isActive ? 'ActiveOption' : 'Option'}>Guitarras</NavLink>
+              <NavLink to='/category/bajos' className={({isActive}) => isActive ? 'ActiveOption' : 'Option'}>Bajos</NavLink>
+              <NavLink to='/category/baterias' className={({isActive}) => isActive ? 'ActiveOption' : 'Option'}>Baterías</NavLink>
           </div>
         <div>
             <CartWidget />
