@@ -1,6 +1,4 @@
-import React from 'react';
 import './App.css';
-import './Components/InstrumentsJsx';
 import Navbar from './Components/Navbar/Navbar';
 import ItemListContainer from './Components/ItemListContainer/ItemListContainer';
 import ItemDetailContainer from './Components/ItemDetailContainer/ItemDetailContainer';

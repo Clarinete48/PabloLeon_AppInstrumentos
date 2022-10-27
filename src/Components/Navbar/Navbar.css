@@ -19,7 +19,6 @@
   }
   
   .Option {
-    /* color: #8C30F5; */
     text-decoration: none;
     border-radius: 25;
     margin: 0 50px;
@@ -45,7 +44,6 @@
   }
   
   .ActiveOption {
-    /* color: #8C30F5; */
     text-decoration: none;
     border-radius: 25;
     margin: 0 50px;

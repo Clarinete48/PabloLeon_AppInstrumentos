@@ -2,14 +2,14 @@ import CartWidget from '../CartWidget/CartWidget'
 import { useState, useEffect } from 'react'
 import './Navbar.css'
 import { Link, NavLink, useLocation } from 'react-router-dom'
-import { collection, getDocs, query, orderBy } from 'firebase/firestore'
+import { collection, getDocs, query } from 'firebase/firestore'
 import { db } from '../../service/firebase'
 
 const NavBar = () => {
   const [categories, setCategories] = useState([])
 
   useEffect(() => {
-    const collectionRef = query(collection(db, 'categories'), orderBy('order'))
+    const collectionRef = query(collection(db, 'categories'))
 
     getDocs(collectionRef).then(response => {
       console.log(response)
