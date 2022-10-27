@@ -2,7 +2,7 @@
     width: 300px;
     padding: 30px;
     margin: 30px;
-    font-size: 10px;
+    font-size: 12px;
     background-color: azure;
 
 }
@@ -27,7 +27,7 @@
 .Button {
     width: auto;
     padding: 12px;
-    font-size: 8px;
+    font-size: 10px;
     background: #00bebe;
     border-radius: 8px;
     flex: none;
@@ -38,7 +38,7 @@
     justify-content: center;
     align-items: center;
     text-decoration: none;
-    color: #FFFFFF;
+    color: #000000;
     border: none;
     border-style: none;
     cursor: pointer;
