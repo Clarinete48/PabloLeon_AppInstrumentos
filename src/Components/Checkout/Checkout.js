@@ -68,33 +68,29 @@ const Checkout = () => {
         return <h1>Generando orden...</h1>
     }
 
-    const { register, formState: { errors } } = useForm
-
     return (
     <>
     <h1>Checkout</h1>
-    <div>
     <form>
+    <div>
+        <label>
+        Name:
+        <input type="text" name="name" />
+        </label>
+        </div>
+    <div>
+        <label>
+        Phone:
+        <input type="number" name="phone" />
+        </label>
+    </div>
         <div>
-            <label>Nombre</label>
-            <input type="text" {...register('name', {
-                required: true,
-            })} />
-            {errors.nombre?.type === 'required' && <p>El campo nombre es requerido</p>}
-        </div>
-                        <div>
-            <label>Email</label>
-            <input type="text" {...register('email', {
-                pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/i
-            })} />
-            {errors.email?.type === 'pattern' && <p>El formato del email es incorrecto</p>}
-        </div>
-        <div>
-            <label>Teléfono</label>
-            <input type="number" {...register('phone')} />
-        </div>
-    </form>
-</div>
+        <label>
+        Email:
+        <input type="text" name="email" />
+        </label>  
+    </div>
+</form>
     <button onClick={createOrder}>Agregar documento</button>
             
         </>
