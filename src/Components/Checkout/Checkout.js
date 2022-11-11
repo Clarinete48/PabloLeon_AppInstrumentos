@@ -2,6 +2,7 @@ import { useState, useContext } from "react"
 import { CartContext } from "../../Context/CartContext"
 import { getDocs, addDoc, collection, doc, updateDoc, where, query, documentId, writeBatch } from 'firebase/firestore'
 import { db } from '../../service/firebase'
+import { useForm } from "react-hook-form"
 
 const Checkout = () => {
     const [loading, setLoading] = useState(false)
@@ -19,8 +20,7 @@ const Checkout = () => {
                 },
                 items: cart,
                 total
-            }
-    
+            }                                                                                    
             console.log(objOrder)
     
             const ids = cart.map(prod => prod.id)
@@ -68,10 +68,34 @@ const Checkout = () => {
         return <h1>Generando orden...</h1>
     }
 
+    const { register, formState: { errors } } = useForm
+
     return (
-        <>
-            <h1>Checkout</h1>
-            <button onClick={createOrder}>Agregar documento</button>
+    <>
+    <h1>Checkout</h1>
+    <div>
+    <form>
+        <div>
+            <label>Nombre</label>
+            <input type="text" {...register('name', {
+                required: true,
+            })} />
+            {errors.nombre?.type === 'required' && <p>El campo nombre es requerido</p>}
+        </div>
+                        <div>
+            <label>Email</label>
+            <input type="text" {...register('email', {
+                pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/i
+            })} />
+            {errors.email?.type === 'pattern' && <p>El formato del email es incorrecto</p>}
+        </div>
+        <div>
+            <label>Teléfono</label>
+            <input type="number" {...register('phone')} />
+        </div>
+    </form>
+</div>
+    <button onClick={createOrder}>Agregar documento</button>
             
         </>
     )
