@@ -13,11 +13,7 @@ const Checkout = () => {
         setLoading(true)
         try {
             const objOrder = {
-                buyer: {
-                    name: 'Pablo León',
-                    phone: '965673973',
-                    email: 'contact@musicapp.cl'
-                },
+                buyer: contactForm,
                 items: cart,
                 total
             }                                                                                    
@@ -68,10 +64,42 @@ const Checkout = () => {
         return <h1>Generando orden...</h1>
     }
 
+    const form = document.getElementById('contactForm'); 
+
+    if(form){ 
+      form.addEventListener('createOrder', contactForm);
+    }
+
+    function contactForm(event) {
+      event.preventDefault(); 
+      const nombre = document.getElementById('nombre');
+      event.preventDefault(); 
+      const phone = document.getElementById('phone');
+      const email = document.getElementById('email');
+      const buyer = {
+        'name': nombre.value,
+        'phone': phone.value,
+        'email': email.value,
+      }; 
+      saveContactForm(buyer);
+      form.reset(); // borrar campos. 
+    }
+
+  function saveContactForm(buyer) {
+    orders.database().ref('contact').push(buyer)
+      .then(function(){
+        alert('orden enviada'); 
+      })
+      .catch(function(){
+        alert('orden no enviada'); 
+      });
+  }
+
+
     return (
     <>
     <h1>Checkout</h1>
-    <form>
+    <form id="contactForm">
     <div>
         <label>
         Name:
@@ -91,8 +119,7 @@ const Checkout = () => {
         </label>  
     </div>
 </form>
-    <button onClick={createOrder}>Agregar documento</button>
-            
+    <button onClick={createOrder}>Enviar orden de compra</button>     
         </>
     )
 }
